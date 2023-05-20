@@ -16,7 +16,7 @@ const NotePad = () => {
                 onChange={handleChange}
                 rows={10}
                 cols={50}
-                placeholder="Start typing..."
+                placeholder="Note down URLs..."
             />
         </div>
     );

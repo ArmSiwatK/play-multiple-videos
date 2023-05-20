@@ -1,30 +1,35 @@
 import React from 'react';
 import YouTubePlayer from '../YouTubePlayer/YouTubePlayer';
+import FilePlayer from '../FilePlayer/FilePlayer';
 import './PlayerArray.css';
 
 const PlayerArray = () => {
-    const initialPlayerCount = 2;
-    const [playerCount, setPlayerCount] = React.useState(initialPlayerCount);
+    const [players, setPlayers] = React.useState(['youtube', 'file']);
 
-    const handleAddPlayer = () => {
-        setPlayerCount(prevCount => prevCount + 1);
+    const handleAddYouTubePlayer = () => {
+        setPlayers(prevPlayers => [...prevPlayers, 'youtube']);
+    };
+
+    const handleAddFilePlayer = () => {
+        setPlayers(prevPlayers => [...prevPlayers, 'file']);
     };
 
     const handleRemovePlayer = () => {
-        setPlayerCount(prevCount => Math.max(prevCount - 1, 0));
+        setPlayers(prevPlayers => prevPlayers.slice(0, prevPlayers.length - 1));
     };
 
     return (
         <div className="player-array-container">
             <div className="player-array-players">
-                {Array.from({ length: playerCount }, (_, index) => (
+                {players.map((playerType, index) => (
                     <div key={`player-${index + 1}`} className="player-array-player">
-                        <YouTubePlayer />
+                        {playerType === 'youtube' ? <YouTubePlayer /> : <FilePlayer />}
                     </div>
                 ))}
             </div>
             <div className="player-array-buttons">
-                <button onClick={handleAddPlayer}>Add Player</button>
+                <button onClick={handleAddYouTubePlayer}>Add YouTube Player</button>
+                <button onClick={handleAddFilePlayer}>Add File Player</button>
                 <button onClick={handleRemovePlayer}>Remove Player</button>
             </div>
         </div>
