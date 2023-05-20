@@ -39,6 +39,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+#button-close {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
 .youtube-player-button:hover {
     background-color: #0056b3;
 }
