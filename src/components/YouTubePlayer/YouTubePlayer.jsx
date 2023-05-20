@@ -3,6 +3,7 @@ import './YouTubePlayer.css';
 
 const YouTubePlayer = () => {
     const [videoLink, setVideoLink] = useState('');
+    const [embedUrl, setEmbedUrl] = useState('');
 
 
 
@@ -28,7 +29,7 @@ const YouTubePlayer = () => {
 
     const handleEnterClick = () => {
         if (!videoLink || !isValidUrl(videoLink)) {
-            // Handle invalid URL or empty field here
+            // Handle invalid URL or empty field
             return;
         }
 
@@ -36,10 +37,10 @@ const YouTubePlayer = () => {
         const videoId = extractVideoId(videoLink);
 
         // Construct the YouTube embed URL
-        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        const newEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
 
         // Set the embed URL as the source for the video player
-        document.getElementById('videoPlayer').src = embedUrl;
+        setEmbedUrl(newEmbedUrl);
     };
 
 
@@ -58,15 +59,17 @@ const YouTubePlayer = () => {
                     Enter
                 </button>
             </div>
-            <div className="youtube-player-video-wrapper">
-                <iframe
-                    id="videoPlayer"
-                    src=""
-                    allowFullScreen
-                    title="YouTube Video Player"
-                    className="youtube-player-video"
-                ></iframe>
-            </div>
+            {embedUrl && (
+                <div className="youtube-player-video-wrapper">
+                    <iframe
+                        id="videoPlayer"
+                        src={embedUrl}
+                        allowFullScreen
+                        title="YouTube Video Player"
+                        className="youtube-player-video"
+                    ></iframe>
+                </div>
+            )}
         </div>
     );
 };
