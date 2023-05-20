@@ -4,6 +4,7 @@ import './YouTubePlayer.css';
 const YouTubePlayer = () => {
     const [videoLink, setVideoLink] = useState('');
     const [embedUrl, setEmbedUrl] = useState('');
+    const [isVideoVisible, setIsVideoVisible] = useState(false);
 
 
 
@@ -29,18 +30,20 @@ const YouTubePlayer = () => {
 
     const handleEnterClick = () => {
         if (!videoLink || !isValidUrl(videoLink)) {
-            // Handle invalid URL or empty field
             return;
         }
 
-        // Extract the video ID from the YouTube URL
         const videoId = extractVideoId(videoLink);
-
-        // Construct the YouTube embed URL
         const newEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
 
-        // Set the embed URL as the source for the video player
         setEmbedUrl(newEmbedUrl);
+        setIsVideoVisible(true);
+    };
+
+    const handleCloseClick = () => {
+        setVideoLink('');
+        setEmbedUrl('');
+        setIsVideoVisible(false);
     };
 
 
@@ -58,6 +61,11 @@ const YouTubePlayer = () => {
                 <button onClick={handleEnterClick} className="youtube-player-button">
                     Enter
                 </button>
+                {isVideoVisible && (
+                    <button onClick={handleCloseClick} className="youtube-player-button">
+                        Close
+                    </button>
+                )}
             </div>
             {embedUrl && (
                 <div className="youtube-player-video-wrapper">

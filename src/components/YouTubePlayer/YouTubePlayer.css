@@ -27,6 +27,7 @@
 }
 
 .youtube-player-button {
+    margin: auto 10px;
     padding: 10px 20px;
     border: none;
     background-color: #007bff;
