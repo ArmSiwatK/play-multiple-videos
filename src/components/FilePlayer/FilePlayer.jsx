@@ -4,6 +4,7 @@ import './FilePlayer.css';
 const FilePlayer = () => {
     const [file, setFile] = useState(null);
     const [isMediaVisible, setIsMediaVisible] = useState(false);
+    const [isFileUploaded, setIsFileUploaded] = useState(false);
     const fileInputRef = useRef(null);
 
 
@@ -11,10 +12,11 @@ const FilePlayer = () => {
     const handleFileChange = (event) => {
         const uploadedFile = event.target.files[0];
         setFile(uploadedFile);
+        setIsFileUploaded(true);
     };
 
     const handleEnterClick = () => {
-        if (!file) {
+        if (!isFileUploaded) {
             return;
         }
 
@@ -24,6 +26,7 @@ const FilePlayer = () => {
     const handleCloseClick = () => {
         setFile(null);
         setIsMediaVisible(false);
+        setIsFileUploaded(false);
 
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
@@ -35,12 +38,18 @@ const FilePlayer = () => {
     return (
         <div className="file-player-container">
             <div className="file-player-row">
-                <input
-                    type="file"
-                    onChange={handleFileChange}
-                    className="file-player-input"
-                    ref={fileInputRef}
-                />
+                {!isFileUploaded ? (
+                    <div className="file-player-input-wrapper">
+                        <input
+                            type="file"
+                            onChange={handleFileChange}
+                            className="file-player-input"
+                            ref={fileInputRef}
+                        />
+                    </div>
+                ) : (
+                    <div className="file-player-input">File selected.</div>
+                )}
                 <button onClick={handleEnterClick} className="file-player-button">
                     View
                 </button>
