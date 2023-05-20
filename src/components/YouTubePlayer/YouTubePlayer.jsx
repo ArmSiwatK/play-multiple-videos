@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './YouTubePlayer.css';
+import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
 
 const YouTubePlayer = () => {
     const [videoLink, setVideoLink] = useState('');
@@ -10,22 +11,6 @@ const YouTubePlayer = () => {
 
     const handleInputChange = (event) => {
         setVideoLink(event.target.value);
-    };
-
-    const extractVideoId = (url) => {
-        const urlObject = new URL(url);
-        const searchParams = new URLSearchParams(urlObject.search);
-        const videoId = searchParams.get('v');
-        return videoId;
-    };
-
-    const isValidUrl = (url) => {
-        try {
-            new URL(url);
-            return true;
-        } catch (error) {
-            return false;
-        }
     };
 
     const handleEnterClick = () => {
