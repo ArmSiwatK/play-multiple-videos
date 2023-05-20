@@ -1,5 +1,5 @@
 # Play Multiple YouTube Videos
-A React application that allows users to view YouTube videos, play audio/video files, and take notes. Why would anybody want to play multiple YouTube videos from the convenience of a single page? I don't know about other people, but I occasionally want to include ambient noises with my music – and manually running multiple media at a time is a hassle.
+A React application that allows users to view YouTube videos, play audio/video files, and take notes. Why would anybody want to play multiple YouTube videos from the convenience of a single page? I don't know about other people, but I occasionally want to include ambient noises and/or other noises with my music – and manually playing multiple audio/videos at a time is a hassle.
 
 ## Installation
 1. Clone the repository:
