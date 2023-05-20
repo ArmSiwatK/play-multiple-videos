@@ -1,4 +1,3 @@
-/* Container styles */
 .youtube-player-container {
     display: flex;
     flex-direction: column;
@@ -11,13 +10,14 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    width: 100%;
 }
 
-/* Input and button styles */
 .youtube-player-input {
     flex: 1;
     padding: 5px;
     margin-right: 5px;
+    width: 100%;
 }
 
 .youtube-player-button {
@@ -26,14 +26,13 @@
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
+    width: auto;
 }
 
-/* Video frame styles */
 .youtube-player-video-wrapper {
     width: 100%;
     height: 0;
     padding-bottom: 56.25%;
-    /* 16:9 aspect ratio */
     position: relative;
     overflow: hidden;
 }
