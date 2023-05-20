@@ -1,0 +1,27 @@
+# Play Multiple YouTube Videos
+A React application that allows users to view YouTube videos, play audio/video files, and take notes. Why would anybody want to play multiple YouTube videos from the convenience of a single page? I don't know about other people, but I occasionally want to include ambient noises with my music – and manually running multiple media at a time is a hassle.
+
+## Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/ArmSiwatK/play-multiple-videos.git
+   ```
+2. Navigate to the project directory:
+    ```
+    cd react-media-player-app
+    ```
+
+3. Install dependencies:
+    ```
+    npm install
+    ```
+
+4. Start the development server:
+    ```
+    npm start
+    ```
+
+## Usage
+* Enter a YouTube video link view a YouTube video.
+* Or upload audio or video files and play them.
+* Feel free to take notes like URLs.
