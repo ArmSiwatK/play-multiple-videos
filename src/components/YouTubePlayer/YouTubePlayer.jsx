@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./YouTubePlayer.css";
+import './YouTubePlayer.css';
 
 const YouTubePlayer = () => {
     const [videoLink, setVideoLink] = useState('');
@@ -17,7 +17,21 @@ const YouTubePlayer = () => {
         return videoId;
     };
 
+    const isValidUrl = (url) => {
+        try {
+            new URL(url);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    };
+
     const handleEnterClick = () => {
+        if (!videoLink || !isValidUrl(videoLink)) {
+            // Handle invalid URL or empty field here
+            return;
+        }
+
         // Extract the video ID from the YouTube URL
         const videoId = extractVideoId(videoLink);
 
