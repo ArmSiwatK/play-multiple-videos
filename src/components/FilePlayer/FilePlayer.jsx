@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './FilePlayer.css';
 
 const FilePlayer = () => {
     const [file, setFile] = useState(null);
     const [isMediaVisible, setIsMediaVisible] = useState(false);
+    const fileInputRef = useRef(null);
+
+
 
     const handleFileChange = (event) => {
         const uploadedFile = event.target.files[0];
@@ -21,7 +24,13 @@ const FilePlayer = () => {
     const handleCloseClick = () => {
         setFile(null);
         setIsMediaVisible(false);
+
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
     };
+
+
 
     return (
         <div className="file-player-container">
@@ -30,6 +39,7 @@ const FilePlayer = () => {
                     type="file"
                     onChange={handleFileChange}
                     className="file-player-input"
+                    ref={fileInputRef}
                 />
                 <button onClick={handleEnterClick} className="file-player-button">
                     View
