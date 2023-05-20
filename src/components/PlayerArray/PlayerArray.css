@@ -12,10 +12,12 @@
 
 .player-array-players {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .player-array-player {
     margin: 10px;
+    display: flex;
+    align-items: center;
 }
