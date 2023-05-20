@@ -1,0 +1,21 @@
+.player-array-container {
+    margin: 20px;
+}
+
+.player-array-buttons {
+    margin-bottom: 10px;
+}
+
+.player-array-buttons button {
+    margin-right: 10px;
+}
+
+.player-array-players {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.player-array-player {
+    margin: 10px;
+}

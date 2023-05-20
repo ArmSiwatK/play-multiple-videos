@@ -1,10 +1,11 @@
-import YouTubePlayer from './components/YouTubePlayer/YouTubePlayer'
+import React from 'react';
+import PlayerArray from './components/PlayerArray/PlayerArray';
 import './App.css'
 
 function App() {
   return (
     <>
-      <YouTubePlayer />
+      <PlayerArray />
     </>
   )
 }
