@@ -31,20 +31,26 @@ const YouTubePlayer = () => {
 
 
     return (
-        <div>
-            <input
-                type="text"
-                value={videoLink}
-                onChange={handleInputChange}
-                placeholder="Enter YouTube link"
-            />
-            <button onClick={handleEnterClick}>Enter</button>
-            <div className="videoWrapper">
+        <div className="youtube-player-container">
+            <div className="youtube-player-row">
+                <input
+                    type="text"
+                    value={videoLink}
+                    onChange={handleInputChange}
+                    placeholder="Enter YouTube link"
+                    className="youtube-player-input"
+                />
+                <button onClick={handleEnterClick} className="youtube-player-button">
+                    Enter
+                </button>
+            </div>
+            <div className="youtube-player-video-wrapper">
                 <iframe
                     id="videoPlayer"
                     src=""
                     allowFullScreen
                     title="YouTube Video Player"
+                    className="youtube-player-video"
                 ></iframe>
             </div>
         </div>
