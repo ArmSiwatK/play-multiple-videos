@@ -16,16 +16,16 @@ const PlayerArray = () => {
 
     return (
         <div className="player-array-container">
-            <div className="player-array-buttons">
-                <button onClick={handleAddPlayer}>Add Player</button>
-                <button onClick={handleRemovePlayer}>Remove Player</button>
-            </div>
             <div className="player-array-players">
                 {Array.from({ length: playerCount }, (_, index) => (
                     <div key={`player-${index + 1}`} className="player-array-player">
                         <YouTubePlayer />
                     </div>
                 ))}
+            </div>
+            <div className="player-array-buttons">
+                <button onClick={handleAddPlayer}>Add Player</button>
+                <button onClick={handleRemovePlayer}>Remove Player</button>
             </div>
         </div>
     );
