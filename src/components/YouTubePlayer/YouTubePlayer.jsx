@@ -44,7 +44,7 @@ const YouTubePlayer = () => {
                     className="youtube-player-input"
                 />
                 <button onClick={handleEnterClick} className="youtube-player-button">
-                    Enter
+                    View
                 </button>
                 {isVideoVisible && (
                     <button onClick={handleCloseClick} className="youtube-player-button" id="button-close">
