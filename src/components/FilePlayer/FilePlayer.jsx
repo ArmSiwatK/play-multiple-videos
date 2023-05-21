@@ -46,9 +46,9 @@ const FilePlayer = () => {
             {isMediaVisible && (
                 <div className="file-player-media-wrapper">
                     {file.type.startsWith('audio/') ? (
-                        <audio controls src={URL.createObjectURL(file)} className="file-player-media"></audio>
+                        <audio controls loop src={URL.createObjectURL(file)} className="file-player-media"></audio>
                     ) : (
-                        <video controls src={URL.createObjectURL(file)} className="file-player-media"></video>
+                        <video controls loop src={URL.createObjectURL(file)} className="file-player-media"></video>
                     )}
                 </div>
             )}
