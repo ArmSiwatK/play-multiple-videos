@@ -20,8 +20,9 @@
     position: relative;
 }
 
-.file-player-input {
-    padding: 5px 10px;
+.file-player-input,
+.file-player-input-display {
+    padding: 6px 10px;
     margin-right: 10px;
     width: 100%;
     border: 1px solid #ccc;
@@ -31,6 +32,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.file-player-input-display {
+    padding: 6px 150px 6px 10px;
 }
 
 .file-player-button {

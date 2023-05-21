@@ -22,12 +22,6 @@ const FilePlayer = () => {
         }
     };
 
-    const handleBrowseClick = () => {
-        if (fileInputRef.current) {
-            fileInputRef.current.click();
-        }
-    };
-
 
 
     return (
@@ -35,31 +29,19 @@ const FilePlayer = () => {
             <div className="file-player-row">
                 <div className="file-player-input-wrapper">
                     {file ? (
-                        <span className="file-player-file-selected">File selected.</span>
+                        <span className="file-player-input-display">File selected.</span>
                     ) : (
-                        <>
-                            <input
-                                type="file"
-                                onChange={handleFileChange}
-                                className="file-player-input"
-                                ref={fileInputRef}
-                            />
-                            <button onClick={handleBrowseClick} className="file-player-button">
-                                Browse
-                            </button>
-                        </>
+                        <input
+                            type="file"
+                            onChange={handleFileChange}
+                            className="file-player-input"
+                            ref={fileInputRef}
+                        />
                     )}
                 </div>
-                {isMediaVisible && (
-                    <>
-                        <button onClick={handleBrowseClick} className="file-player-button">
-                            Browse
-                        </button>
-                        <button onClick={handleCloseClick} className="file-player-button" id="button-close">
-                            Close
-                        </button>
-                    </>
-                )}
+                <button onClick={handleCloseClick} className="file-player-button" id="button-close">
+                    Close
+                </button>
             </div>
             {isMediaVisible && (
                 <div className="file-player-media-wrapper">
