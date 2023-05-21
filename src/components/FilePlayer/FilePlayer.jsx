@@ -13,13 +13,6 @@ const FilePlayer = () => {
         const uploadedFile = event.target.files[0];
         setFile(uploadedFile);
         setIsFileUploaded(true);
-    };
-
-    const handleEnterClick = () => {
-        if (!isFileUploaded) {
-            return;
-        }
-
         setIsMediaVisible(true);
     };
 
@@ -27,9 +20,14 @@ const FilePlayer = () => {
         setFile(null);
         setIsMediaVisible(false);
         setIsFileUploaded(false);
-
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
+        }
+    };
+
+    const handleBrowseClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
         }
     };
 
@@ -38,21 +36,17 @@ const FilePlayer = () => {
     return (
         <div className="file-player-container">
             <div className="file-player-row">
-                {!isFileUploaded ? (
-                    <div className="file-player-input-wrapper">
-                        <input
-                            type="file"
-                            onChange={handleFileChange}
-                            className="file-player-input"
-                            ref={fileInputRef}
-                        />
-                    </div>
-                ) : (
-                    <div className="file-player-input">File selected.</div>
-                )}
-                <button onClick={handleEnterClick} className="file-player-button">
-                    View
-                </button>
+                <div className="file-player-input-wrapper">
+                    <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className="file-player-input"
+                        ref={fileInputRef}
+                    />
+                    <button onClick={handleBrowseClick} className="file-player-button">
+                        Browse
+                    </button>
+                </div>
                 {isMediaVisible && (
                     <button onClick={handleCloseClick} className="file-player-button" id="button-close">
                         Close
