@@ -4,7 +4,6 @@ import './FilePlayer.css';
 const FilePlayer = () => {
     const [file, setFile] = useState(null);
     const [isMediaVisible, setIsMediaVisible] = useState(false);
-    const [isFileUploaded, setIsFileUploaded] = useState(false);
     const fileInputRef = useRef(null);
 
 
@@ -12,14 +11,12 @@ const FilePlayer = () => {
     const handleFileChange = (event) => {
         const uploadedFile = event.target.files[0];
         setFile(uploadedFile);
-        setIsFileUploaded(true);
         setIsMediaVisible(true);
     };
 
     const handleCloseClick = () => {
         setFile(null);
         setIsMediaVisible(false);
-        setIsFileUploaded(false);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -37,20 +34,31 @@ const FilePlayer = () => {
         <div className="file-player-container">
             <div className="file-player-row">
                 <div className="file-player-input-wrapper">
-                    <input
-                        type="file"
-                        onChange={handleFileChange}
-                        className="file-player-input"
-                        ref={fileInputRef}
-                    />
-                    <button onClick={handleBrowseClick} className="file-player-button">
-                        Browse
-                    </button>
+                    {file ? (
+                        <span className="file-player-file-selected">File selected.</span>
+                    ) : (
+                        <>
+                            <input
+                                type="file"
+                                onChange={handleFileChange}
+                                className="file-player-input"
+                                ref={fileInputRef}
+                            />
+                            <button onClick={handleBrowseClick} className="file-player-button">
+                                Browse
+                            </button>
+                        </>
+                    )}
                 </div>
                 {isMediaVisible && (
-                    <button onClick={handleCloseClick} className="file-player-button" id="button-close">
-                        Close
-                    </button>
+                    <>
+                        <button onClick={handleBrowseClick} className="file-player-button">
+                            Browse
+                        </button>
+                        <button onClick={handleCloseClick} className="file-player-button" id="button-close">
+                            Close
+                        </button>
+                    </>
                 )}
             </div>
             {isMediaVisible && (
