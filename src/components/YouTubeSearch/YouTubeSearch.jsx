@@ -4,6 +4,7 @@ import './YouTubeSearch.css';
 const YouTubeSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [showResults, setShowResults] = useState(true);
 
 
 
@@ -20,6 +21,7 @@ const YouTubeSearch = () => {
             if (response.ok) {
                 const data = await response.json();
                 setSearchResults(data.items);
+                setShowResults(true);
             } else {
                 console.error('Search request failed');
             }
@@ -45,6 +47,11 @@ const YouTubeSearch = () => {
         }
     };
 
+    const handleClearResults = () => {
+        setSearchResults([]);
+        setShowResults(false);
+    };
+
 
 
     return (
@@ -57,25 +64,28 @@ const YouTubeSearch = () => {
                     onKeyDown={handleKeyDown}
                     placeholder="Enter search term"
                 />
-                <button onClick={handleSearch}>Search</button>
+                <button onClick={handleSearch} className="button-search">Search</button>
+                <button onClick={handleClearResults} className="button-clear">Clear</button>
             </div>
 
-            <ul>
-                {searchResults.map((video) => (
-                    <li key={video.id.videoId}>
-                        <div
-                            className="card"
-                            onClick={() => handleCardClick(video.id.videoId)}
-                        >
-                            <img
-                                src={video.snippet.thumbnails.default.url}
-                                alt="Video Thumbnail"
-                            />
-                            <h3>{video.snippet.title}</h3>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            {showResults && (
+                <ul>
+                    {searchResults.map((video) => (
+                        <li key={video.id.videoId}>
+                            <div
+                                className="card"
+                                onClick={() => handleCardClick(video.id.videoId)}
+                            >
+                                <img
+                                    src={video.snippet.thumbnails.default.url}
+                                    alt="Video Thumbnail"
+                                />
+                                <h3>{video.snippet.title}</h3>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
