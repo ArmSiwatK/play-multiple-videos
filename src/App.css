@@ -5,25 +5,3 @@
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
-
-.youtube-button {
-  display: block;
-  width: 200px;
-  height: 60px;
-  font-size: 18px;
-  text-align: center;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  margin: 20px auto;
-  text-decoration: none;
-  line-height: 60px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-.youtube-button:hover {
-  background-color: #c82333;
-  color: white;
-}

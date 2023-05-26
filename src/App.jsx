@@ -11,14 +11,6 @@ function App() {
     <>
       <Background />
       <YouTubeSearch />
-      <a
-        href="https://www.youtube.com"
-        className="youtube-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Go to YouTube
-      </a>
       <NotePad />
       <PlayerArray />
       <Instruction />
