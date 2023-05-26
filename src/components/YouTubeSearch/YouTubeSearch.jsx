@@ -19,11 +19,11 @@ const YouTubeSearch = () => {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setSearchResults(data.items);
+                const { items } = await response.json();
+                setSearchResults(items);
                 setShowResults(true);
             } else {
-                console.error('Search request failed');
+                throw new Error('Search request failed');
             }
         } catch (error) {
             console.error('An error occurred:', error);
