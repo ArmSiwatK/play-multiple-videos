@@ -13,7 +13,7 @@ const YouTubeSearch = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await fetch(`/api/search`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
