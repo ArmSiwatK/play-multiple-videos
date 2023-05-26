@@ -4,7 +4,7 @@ import FilePlayer from '../FilePlayer/FilePlayer';
 import './PlayerArray.css';
 
 const PlayerArray = () => {
-    const [players, setPlayers] = React.useState(['youtube', 'file']);
+    const [players, setPlayers] = React.useState(['youtube', 'youtube']);
 
     const handleAddYouTubePlayer = () => {
         setPlayers(prevPlayers => [...prevPlayers, 'youtube']);
