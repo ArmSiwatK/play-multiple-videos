@@ -39,6 +39,12 @@ const YouTubeSearch = () => {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
 
 
     return (
@@ -48,6 +54,7 @@ const YouTubeSearch = () => {
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     placeholder="Enter search term"
                 />
                 <button onClick={handleSearch}>Search</button>
