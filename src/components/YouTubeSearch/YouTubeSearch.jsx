@@ -6,6 +6,8 @@ const YouTubeSearch = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(true);
 
+    const MAX_TITLE_LENGTH = 60; // Define the maximum length for the video title
+
 
 
     const handleSearch = async () => {
@@ -52,6 +54,14 @@ const YouTubeSearch = () => {
         setShowResults(false);
     };
 
+    const truncateTitle = (title) => {
+        if (title.length <= MAX_TITLE_LENGTH) {
+            return title;
+        } else {
+            return `${title.substring(0, MAX_TITLE_LENGTH)}...`;
+        }
+    };
+
 
 
     return (
@@ -64,23 +74,21 @@ const YouTubeSearch = () => {
                     onKeyDown={handleKeyDown}
                     placeholder="Enter search term"
                 />
-                <button onClick={handleSearch} className="button-search">Search</button>
-                <button onClick={handleClearResults} className="button-clear">Clear</button>
+                <button onClick={handleSearch} className="button-search">
+                    Search
+                </button>
+                <button onClick={handleClearResults} className="button-clear">
+                    Clear
+                </button>
             </div>
 
             {showResults && (
                 <ul>
                     {searchResults.map((video) => (
                         <li key={video.id.videoId}>
-                            <div
-                                className="card"
-                                onClick={() => handleCardClick(video.id.videoId)}
-                            >
-                                <img
-                                    src={video.snippet.thumbnails.default.url}
-                                    alt="Video Thumbnail"
-                                />
-                                <h3>{video.snippet.title}</h3>
+                            <div className="card" onClick={() => handleCardClick(video.id.videoId)}>
+                                <img src={video.snippet.thumbnails.default.url} alt="Video Thumbnail" />
+                                <h3>{truncateTitle(video.snippet.title)}</h3>
                             </div>
                         </li>
                     ))}
