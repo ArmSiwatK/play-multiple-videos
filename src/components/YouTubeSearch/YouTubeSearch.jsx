@@ -5,8 +5,9 @@ const YouTubeSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(true);
+    const [maxResults, setMaxResults] = useState();
 
-    const MAX_TITLE_LENGTH = 60; // Define the maximum length for the video title
+    const maxTitleLength = 60;
 
 
 
@@ -17,7 +18,7 @@ const YouTubeSearch = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ searchTerm }),
+                body: JSON.stringify({ searchTerm, maxResults }),
             });
 
             if (response.ok) {
@@ -54,11 +55,18 @@ const YouTubeSearch = () => {
         setShowResults(false);
     };
 
+    const handleMaxResultsChange = (e) => {
+        const input = e.target.value;
+        if (input === '' || (parseInt(input) >= 1 && parseInt(input) <= 20)) {
+            setMaxResults(input);
+        }
+    };
+
     const truncateTitle = (title) => {
-        if (title.length <= MAX_TITLE_LENGTH) {
+        if (title.length <= maxTitleLength) {
             return title;
         } else {
-            return `${title.substring(0, MAX_TITLE_LENGTH)}...`;
+            return `${title.substring(0, maxTitleLength)}...`;
         }
     };
 
@@ -73,6 +81,7 @@ const YouTubeSearch = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Enter search term"
+                    className="search-query-input"
                 />
                 <button onClick={handleSearch} className="button-search">
                     Search
@@ -80,6 +89,13 @@ const YouTubeSearch = () => {
                 <button onClick={handleClearResults} className="button-clear">
                     Clear
                 </button>
+                <input
+                    type="number"
+                    value={maxResults}
+                    onChange={handleMaxResultsChange}
+                    placeholder="Max Results"
+                    className="results-number-input"
+                />
             </div>
 
             {showResults && (

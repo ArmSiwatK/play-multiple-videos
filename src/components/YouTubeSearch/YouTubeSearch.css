@@ -10,13 +10,23 @@
     margin-bottom: 20px;
 }
 
-.input-container input {
+.search-query-input {
     width: 300px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 10px;
+}
+
+.results-number-input {
+    margin-left: 10px;
+    padding: 5px;
+    width: 140px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
 }
 
 .input-container button {
