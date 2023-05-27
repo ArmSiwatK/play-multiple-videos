@@ -6,7 +6,7 @@ const Instruction = () => {
         <div className="instruction-container">
             <h1>How to use:</h1>
             <ul>
-                <li>Click the big button at the top to go to YouTube.</li>
+                <li>Search for YouTube videos. Click on them to copy its URL to fill in a player below</li>
                 <li>Use the notepad provided to note down URLs or any other information.</li>
                 <li>
                     The YouTube player accepts any YouTube link that contains a video ID,
@@ -19,6 +19,8 @@ const Instruction = () => {
                 <li>
                     Add or remove players using the three buttons.
                 </li>
+                <li>If searching doesn't work, it likely means my YouTube Data API has reached its daily limit. Go to YouTube yourself for the time being and try again tomorrow.</li>
+                <li>Here, a button for your convenience.</li>
             </ul>
         </div>
     );
