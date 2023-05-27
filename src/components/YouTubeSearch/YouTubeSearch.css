@@ -29,21 +29,11 @@
     font-size: 18px;
 }
 
-.input-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4285f4;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
 .input-container .button-search {
     padding: 10px 20px;
     margin-right: 10px;
     font-size: 16px;
-    background-color: #4285f4;
+    background-color: #dc3545;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -52,7 +42,7 @@
 }
 
 .input-container .button-search:hover {
-    background-color: #3367d6;
+    background-color: #c82333;
 }
 
 .input-container .button-search:active {
@@ -64,7 +54,7 @@
 .input-container .button-clear {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #f44336;
+    background-color: #333333;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -73,7 +63,7 @@
 }
 
 .input-container .button-clear:hover {
-    background-color: #e53935;
+    background-color: #555555;
 }
 
 .input-container .button-clear:active {
