@@ -5,8 +5,7 @@
 }
 
 .notepad-textarea {
-    width: 50%;
-    height: 30%;
+    width: 40rem;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -23,8 +22,7 @@
 
 @media (max-width: 768px) {
     .notepad-textarea {
-        width: 75%;
-        height: 30%;
+        width: 20rem;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
