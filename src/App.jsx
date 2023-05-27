@@ -12,6 +12,14 @@ function App() {
       <YouTubeSearch />
       <PlayerArray />
       <Instruction />
+      <a
+        href="https://www.youtube.com"
+        className="youtube-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Go to YouTube
+      </a>
     </>
   )
 }
