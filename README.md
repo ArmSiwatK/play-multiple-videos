@@ -13,12 +13,12 @@ A React application that allows users to view YouTube videos, play audio/video f
 
 3. Install dependencies:
     ```
-    npm install
+    yarn install
     ```
 
 4. Start the development server:
     ```
-    npm start
+    yarn run dev
     ```
 
 ## Usage
