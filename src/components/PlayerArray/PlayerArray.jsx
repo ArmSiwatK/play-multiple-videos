@@ -7,16 +7,9 @@ const PlayerArray = ({ videoUrl }) => {
     const [players, setPlayers] = useState(['youtube', 'youtube']);
     const [videoUrls, setVideoUrls] = useState(['', '']);
 
-
-
-    const handleAddYouTubePlayer = () => {
-        setPlayers((prevPlayers) => [...prevPlayers, 'youtube']);
-        setVideoUrls((prevUrls) => [...prevUrls, '']);
-    };
-
-    const handleAddFilePlayer = () => {
-        setPlayers((prevPlayers) => [...prevPlayers, 'file']);
-        setVideoUrls((prevUrls) => [...prevUrls, null]);
+    const handleAddPlayer = (playerType) => {
+        setPlayers((prevPlayers) => [...prevPlayers, playerType]);
+        setVideoUrls((prevUrls) => [...prevUrls, playerType === 'youtube' ? '' : null]);
     };
 
     const handleRemovePlayer = () => {
@@ -25,9 +18,8 @@ const PlayerArray = ({ videoUrl }) => {
     };
 
     const handleRemoveAllPlayers = () => {
-        for (let i = 0; i < players.length; i++) {
-            handleRemovePlayer();
-        }
+        setPlayers([]);
+        setVideoUrls([]);
     };
 
     const handleVideoUrlChange = (index, url) => {
@@ -67,8 +59,8 @@ const PlayerArray = ({ videoUrl }) => {
                 ))}
             </div>
             <div className="player-array-buttons">
-                <button onClick={handleAddYouTubePlayer}>Add YouTube Player</button>
-                <button onClick={handleAddFilePlayer}>Add File Player</button>
+                <button onClick={() => handleAddPlayer('youtube')}>Add YouTube Player</button>
+                <button onClick={() => handleAddPlayer('file')}>Add File Player</button>
                 <button onClick={handleRemovePlayer}>Remove Player</button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
             </div>
