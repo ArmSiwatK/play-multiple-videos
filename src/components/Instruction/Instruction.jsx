@@ -13,11 +13,7 @@ const Instruction = () => {
                     except for Shorts.
                 </li>
                 <li>
-                    Alternatively, you can use the File Player to play video or audio files
-                    stored on your device.
-                </li>
-                <li>
-                    Add or remove players using the three buttons.
+                    Add or remove players using the control buttons.
                 </li>
                 <li>If searching doesn't work, it likely means my YouTube Data API has reached its daily limit. Go to YouTube yourself for the time being and try again tomorrow.</li>
                 <li>Here, a button for your convenience.</li>
