@@ -47,6 +47,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
 
             setEmbedUrl(newEmbedUrl);
             setIsVideoVisible(true);
+            setVideoLink(videoUrl || '');
         }
     }, [videoUrl]);
 
