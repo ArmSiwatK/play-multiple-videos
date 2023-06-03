@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './YouTubeSearch.css';
 
-const YouTubeSearch = () => {
+const YouTubeSearch = ({ onVideoUrlCopy }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(true);
@@ -35,13 +35,14 @@ const YouTubeSearch = () => {
 
     const handleCardClick = async (videoId) => {
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        onVideoUrlCopy(videoUrl)
 
-        try {
-            await navigator.clipboard.writeText(videoUrl);
-            console.log('Video URL copied to clipboard:', videoUrl);
-        } catch (error) {
-            console.error('Failed to copy video URL:', error);
-        }
+        // try {
+        //     await navigator.clipboard.writeText(videoUrl);
+        //     console.log('Video URL copied to clipboard:', videoUrl);
+        // } catch (error) {
+        //     console.error('Failed to copy video URL:', error);
+        // }
     };
 
     const handleKeyDown = (e) => {

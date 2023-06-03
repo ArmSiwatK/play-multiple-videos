@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './YouTubePlayer.css';
+import React, { useState, useEffect } from 'react';
 import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
+import './YouTubePlayer.css';
 
-const YouTubePlayer = () => {
+const YouTubePlayer = ({ videoUrl, onVideoUrlChange }) => {
     const [videoLink, setVideoLink] = useState('');
     const [embedUrl, setEmbedUrl] = useState('');
     const [isVideoVisible, setIsVideoVisible] = useState(false);
@@ -23,13 +23,27 @@ const YouTubePlayer = () => {
 
         setEmbedUrl(newEmbedUrl);
         setIsVideoVisible(true);
+        onVideoUrlChange(videoLink);
     };
 
     const handleCloseClick = () => {
         setVideoLink('');
         setEmbedUrl('');
         setIsVideoVisible(false);
+        onVideoUrlChange('');
     };
+
+
+
+    useEffect(() => {
+        if (videoUrl && isValidUrl(videoUrl)) {
+            const videoId = extractVideoId(videoUrl);
+            const newEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
+
+            setEmbedUrl(newEmbedUrl);
+            setIsVideoVisible(true);
+        }
+    }, [videoUrl]);
 
 
 
