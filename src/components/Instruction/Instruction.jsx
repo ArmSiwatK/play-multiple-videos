@@ -6,7 +6,7 @@ const Instruction = () => {
         <div className="instruction-container">
             <h1>How to use:</h1>
             <ul>
-                <li>Search for YouTube videos. Click on them to copy its URL to fill in a player below</li>
+                <li>Search for YouTube videos. Click on one to assign them to an empty YouTube player, or manually copy and paste the links yourself.</li>
                 <li>Use the notepad provided to note down URLs or any other information.</li>
                 <li>
                     The YouTube player accepts any YouTube link that contains a video ID,
