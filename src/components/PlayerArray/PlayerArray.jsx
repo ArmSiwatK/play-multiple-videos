@@ -12,9 +12,17 @@ const PlayerArray = ({ videoUrl }) => {
         setVideoUrls((prevUrls) => [...prevUrls, playerType === 'youtube' ? '' : null]);
     };
 
-    const handleRemovePlayer = () => {
-        setPlayers((prevPlayers) => prevPlayers.slice(0, prevPlayers.length - 1));
-        setVideoUrls((prevUrls) => prevUrls.slice(0, prevUrls.length - 1));
+    const handleRemovePlayerAtIndex = (index) => {
+        setPlayers((prevPlayers) => {
+            const updatedPlayers = [...prevPlayers];
+            updatedPlayers.splice(index, 1);
+            return updatedPlayers;
+        });
+        setVideoUrls((prevUrls) => {
+            const updatedUrls = [...prevUrls];
+            updatedUrls.splice(index, 1);
+            return updatedUrls;
+        });
     };
 
     const handleRemoveAllPlayers = () => {
@@ -51,7 +59,11 @@ const PlayerArray = ({ videoUrl }) => {
                 {players.map((playerType, index) => (
                     <div key={`player-${index + 1}`} className="player-array-player">
                         {playerType === 'youtube' ? (
-                            <YouTubePlayer videoUrl={videoUrls[index]} onVideoUrlChange={(url) => handleVideoUrlChange(index, url)} />
+                            <YouTubePlayer
+                                videoUrl={videoUrls[index]}
+                                onVideoUrlChange={(url) => handleVideoUrlChange(index, url)}
+                                onClose={() => handleRemovePlayerAtIndex(index)}
+                            />
                         ) : (
                             <FilePlayer />
                         )}
@@ -61,7 +73,6 @@ const PlayerArray = ({ videoUrl }) => {
             <div className="player-array-buttons">
                 <button onClick={() => handleAddPlayer('youtube')}>Add YouTube Player</button>
                 <button onClick={() => handleAddPlayer('file')}>Add File Player</button>
-                <button onClick={handleRemovePlayer}>Remove Player</button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
             </div>
         </div>

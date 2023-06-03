@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
 import './YouTubePlayer.css';
 
-const YouTubePlayer = ({ videoUrl, onVideoUrlChange }) => {
+const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
     const [videoLink, setVideoLink] = useState('');
     const [embedUrl, setEmbedUrl] = useState('');
     const [isVideoVisible, setIsVideoVisible] = useState(false);
@@ -33,7 +33,10 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange }) => {
         onVideoUrlChange('');
     };
 
-
+    const handleRemovePlayer = () => {
+        handleCloseClick();
+        onClose();
+    };
 
     useEffect(() => {
         if (videoUrl && isValidUrl(videoUrl)) {
@@ -60,8 +63,12 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange }) => {
                 <button onClick={handleEnterClick} className="youtube-player-button">
                     View
                 </button>
-                {isVideoVisible && (
+                {isVideoVisible ? (
                     <button onClick={handleCloseClick} className="youtube-player-button" id="button-close">
+                        Close
+                    </button>
+                ) : (
+                    <button onClick={handleRemovePlayer} className="youtube-player-button" id="button-close">
                         Close
                     </button>
                 )}
