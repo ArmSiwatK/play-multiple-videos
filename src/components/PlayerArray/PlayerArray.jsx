@@ -24,6 +24,12 @@ const PlayerArray = ({ videoUrl }) => {
         setVideoUrls((prevUrls) => prevUrls.slice(0, prevUrls.length - 1));
     };
 
+    const handleRemoveAllPlayers = () => {
+        for (let i = 0; i < players.length; i++) {
+            handleRemovePlayer();
+        }
+    };
+
     const handleVideoUrlChange = (index, url) => {
         setVideoUrls((prevUrls) => {
             const updatedUrls = [...prevUrls];
@@ -64,6 +70,7 @@ const PlayerArray = ({ videoUrl }) => {
                 <button onClick={handleAddYouTubePlayer}>Add YouTube Player</button>
                 <button onClick={handleAddFilePlayer}>Add File Player</button>
                 <button onClick={handleRemovePlayer}>Remove Player</button>
+                <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
             </div>
         </div>
     );
