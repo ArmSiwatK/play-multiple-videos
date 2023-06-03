@@ -15,9 +15,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
         try {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ searchTerm, maxResults }),
             });
 
@@ -35,14 +33,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const handleCardClick = async (videoId) => {
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-        onVideoUrlCopy(videoUrl)
-
-        // try {
-        //     await navigator.clipboard.writeText(videoUrl);
-        //     console.log('Video URL copied to clipboard:', videoUrl);
-        // } catch (error) {
-        //     console.error('Failed to copy video URL:', error);
-        // }
+        onVideoUrlCopy(videoUrl);
     };
 
     const handleKeyDown = (e) => {
@@ -63,13 +54,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
         }
     };
 
-    const truncateTitle = (title) => {
-        if (title.length <= maxTitleLength) {
-            return title;
-        } else {
-            return `${title.substring(0, maxTitleLength)}...`;
-        }
-    };
+    const truncateTitle = (title) => (title.length <= maxTitleLength ? title : `${title.substring(0, maxTitleLength)}...`);
 
 
 
