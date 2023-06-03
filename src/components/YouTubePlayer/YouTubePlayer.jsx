@@ -38,6 +38,8 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
         onClose();
     };
 
+
+
     useEffect(() => {
         if (videoUrl && isValidUrl(videoUrl)) {
             const videoId = extractVideoId(videoUrl);
@@ -63,15 +65,9 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
                 <button onClick={handleEnterClick} className="youtube-player-button">
                     View
                 </button>
-                {isVideoVisible ? (
-                    <button onClick={handleCloseClick} className="youtube-player-button" id="button-close">
-                        Close
-                    </button>
-                ) : (
-                    <button onClick={handleRemovePlayer} className="youtube-player-button" id="button-close">
-                        Close
-                    </button>
-                )}
+                <button onClick={isVideoVisible ? handleCloseClick : handleRemovePlayer} className="youtube-player-button" id="button-close">
+                    Close
+                </button>
             </div>
             {embedUrl && (
                 <div className="youtube-player-video-wrapper">
