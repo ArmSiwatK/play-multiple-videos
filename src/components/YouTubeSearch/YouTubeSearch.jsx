@@ -74,8 +74,11 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     };
 
     const handleClearResults = () => {
+        setSearchTerm('');
         setSearchResults([]);
         setShowResults(false);
+        setPreviousSearchTerm('');
+        setPreviousMaxResults('');
     };
 
     const truncateTitle = (title) => (title.length <= maxTitleLength ? title : `${title.substring(0, maxTitleLength)}...`);
