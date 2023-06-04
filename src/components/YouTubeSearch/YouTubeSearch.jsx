@@ -2,20 +2,29 @@ import React, { useState } from 'react';
 import './YouTubeSearch.css';
 
 const YouTubeSearch = ({ onVideoUrlCopy }) => {
+
+    const maxTitleLength = 60;
+
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(true);
     const [maxResults, setMaxResults] = useState();
+    const [previousSearchTerm, setPreviousSearchTerm] = useState('');
+    const [previousMaxResults, setPreviousMaxResults] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-
-    const maxTitleLength = 60;
 
 
 
     const handleSearch = async () => {
         try {
+            if (searchTerm === previousSearchTerm && maxResults === previousMaxResults) {
+                return;
+            }
+
             handleClearResults();
             setIsLoading(true);
+            setPreviousSearchTerm(searchTerm);
+            setPreviousMaxResults(maxResults);
 
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
                 method: 'POST',
@@ -26,7 +35,6 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
             if (response.ok) {
                 const { items } = await response.json();
                 setSearchResults(items);
-                setShowResults(true);
             } else {
                 throw new Error('Search request failed');
             }
@@ -34,6 +42,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
             console.error('An error occurred:', error);
         } finally {
             setIsLoading(false);
+            setShowResults(true);
         }
     };
 
