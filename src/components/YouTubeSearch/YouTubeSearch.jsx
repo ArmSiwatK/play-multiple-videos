@@ -29,7 +29,9 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                 return;
             }
 
-            handleClearResults();
+            setSearchResults([]);
+            setShowResults(false);
+            
             setIsLoading(true);
 
             setPreviousSearchTerm(searchTerm);
