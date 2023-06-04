@@ -50,9 +50,12 @@
     color: #fff;
 }
 
-.input-container .button-search:hover,
-.input-container .button-clear:hover {
+.input-container .button-search:hover {
     background-color: #c82333;
+}
+
+.input-container .button-clear:hover {
+    background-color: #555555;
 }
 
 .input-container .button-search:active,
