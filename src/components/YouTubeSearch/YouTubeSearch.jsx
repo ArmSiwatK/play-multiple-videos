@@ -6,6 +6,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(true);
     const [maxResults, setMaxResults] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const maxTitleLength = 60;
 
@@ -13,6 +14,9 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const handleSearch = async () => {
         try {
+            handleClearResults();
+            setIsLoading(true);
+
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -28,6 +32,8 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
             }
         } catch (error) {
             console.error('An error occurred:', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -83,6 +89,12 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                     className="results-number-input"
                 />
             </div>
+
+            {isLoading && (
+                <div className="search-loading-icon">
+                    <div className="search-spinner"></div>
+                </div>
+            )}
 
             {showResults && (
                 <ul>
