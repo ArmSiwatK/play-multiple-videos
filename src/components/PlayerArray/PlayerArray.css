@@ -6,11 +6,11 @@
     margin-bottom: 10px;
 }
 
-#add-player-button {
+#player-add-button {
     background-color: #dc3545;
 }
 
-#add-player-button:hover {
+#player-add-button:hover {
     background-color: #c82333;
 }
 
