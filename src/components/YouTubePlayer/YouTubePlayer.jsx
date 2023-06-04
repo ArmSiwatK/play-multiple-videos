@@ -3,11 +3,18 @@ import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
 import './YouTubePlayer.css';
 
 const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
+
+    /*
+    < --------------- States --------------- >
+    */
+
     const [videoLink, setVideoLink] = useState('');
     const [embedUrl, setEmbedUrl] = useState('');
     const [isVideoVisible, setIsVideoVisible] = useState(false);
 
-
+    /*
+    < --------------- Functions --------------- >
+    */
 
     const handleInputChange = (event) => {
         setVideoLink(event.target.value);
@@ -38,7 +45,9 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
         onClose();
     };
 
-
+    /*
+    < --------------- useEffect Hook --------------- >
+    */
 
     useEffect(() => {
         if (videoUrl && isValidUrl(videoUrl)) {
@@ -51,7 +60,9 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
         }
     }, [videoUrl]);
 
-
+    /*
+    < --------------- JSX Structure --------------- >
+    */
 
     return (
         <div className="youtube-player-container">

@@ -3,17 +3,25 @@ import './YouTubeSearch.css';
 
 const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
-    const maxTitleLength = 60;
+    /*
+    < --------------- States and Variable --------------- >
+    */
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(false);
     const [showResults, setShowResults] = useState(true);
     const [maxResults, setMaxResults] = useState();
+
     const [previousSearchTerm, setPreviousSearchTerm] = useState('');
     const [previousMaxResults, setPreviousMaxResults] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
+    const maxTitleLength = 60;
 
+    /*
+    < --------------- Functions --------------- >
+    */
 
     const handleSearch = async () => {
         try {
@@ -23,6 +31,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
             handleClearResults();
             setIsLoading(true);
+
             setPreviousSearchTerm(searchTerm);
             setPreviousMaxResults(maxResults);
 
@@ -46,20 +55,10 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
         }
     };
 
-    const handleCardClick = async (videoId) => {
-        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-        onVideoUrlCopy(videoUrl);
-    };
-
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             handleSearch();
         }
-    };
-
-    const handleClearResults = () => {
-        setSearchResults([]);
-        setShowResults(false);
     };
 
     const handleMaxResultsChange = (e) => {
@@ -69,9 +68,21 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
         }
     };
 
+    const handleCardClick = async (videoId) => {
+        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        onVideoUrlCopy(videoUrl);
+    };
+
+    const handleClearResults = () => {
+        setSearchResults([]);
+        setShowResults(false);
+    };
+
     const truncateTitle = (title) => (title.length <= maxTitleLength ? title : `${title.substring(0, maxTitleLength)}...`);
 
-
+    /*
+    < --------------- JSX Structure --------------- >
+    */
 
     return (
         <div className="container">

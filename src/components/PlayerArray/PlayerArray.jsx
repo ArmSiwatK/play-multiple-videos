@@ -3,10 +3,17 @@ import YouTubePlayer from '../YouTubePlayer/YouTubePlayer';
 import './PlayerArray.css';
 
 const PlayerArray = ({ videoUrl }) => {
+
+    /*
+    < --------------- States --------------- >
+    */
+
     const [players, setPlayers] = useState(['youtube', 'youtube']);
     const [videoUrls, setVideoUrls] = useState(['', '']);
 
-
+    /*
+    < --------------- Functions --------------- >
+    */
 
     const handleAddPlayer = () => {
         setPlayers((prevPlayers) => [...prevPlayers, 'youtube']);
@@ -31,7 +38,9 @@ const PlayerArray = ({ videoUrl }) => {
         });
     };
 
-
+    /*
+    < --------------- useEffect Hook --------------- >
+    */
 
     useEffect(() => {
         const emptyIndex = videoUrls.findIndex((url) => url === '');
@@ -44,7 +53,9 @@ const PlayerArray = ({ videoUrl }) => {
         }
     }, [videoUrl]);
 
-
+    /*
+    < --------------- JSX Structure --------------- >
+    */
 
     return (
         <div className="player-array-container">
