@@ -42,10 +42,15 @@
 #button-close {
     margin-right: 0;
     margin-left: 10px;
+    background-color: #333333;
 }
 
 .youtube-player-button:hover {
     background-color: #c82333;
+}
+
+#button-close:hover {
+    background-color: #555555;
 }
 
 .youtube-player-video-wrapper {

@@ -60,7 +60,7 @@ const PlayerArray = ({ videoUrl }) => {
                 ))}
             </div>
             <div className="player-array-buttons">
-                <button onClick={handleAddPlayer}>Add YouTube Player</button>
+                <button id="add-player-button" onClick={handleAddPlayer}>Add YouTube Player</button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
             </div>
         </div>
