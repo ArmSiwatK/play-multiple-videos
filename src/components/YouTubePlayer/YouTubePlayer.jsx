@@ -16,7 +16,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     const playerContainerRef = useRef(null);
 
     /*
-    < --------------- Functions --------------- >
+    < --------------- Functions: Event Handler --------------- >
     */
 
     const handleInputChange = (event) => {
@@ -24,10 +24,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     };
 
     const handleEnterClick = () => {
-        if (!videoLink || !isValidUrl(videoLink)) {
-            return;
-        }
-
+        if (!videoLink || !isValidUrl(videoLink)) return;
         const videoId = extractVideoId(videoLink);
         onVideoUrlChange(videoLink);
         loadPlayer(videoId);
@@ -46,12 +43,12 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     };
 
     const handleButtonClick = () => {
-        if (player) {
-            handleCloseClick();
-        } else {
-            handleRemovePlayer();
-        }
+        player ? handleCloseClick() : handleRemovePlayer();
     };
+
+    /*
+    < --------------- Functions: YouTube Player --------------- >
+    */
 
     const loadPlayer = (videoId) => {
         setPlayer(
@@ -74,22 +71,13 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     };
 
     const onPlayerStateChange = (event) => {
-        if (event.data === window.YT.PlayerState.PLAYING) {
-            setIsPlaying(true);
-        } else {
-            setIsPlaying(false);
-        }
+        setIsPlaying(event.data === window.YT.PlayerState.PLAYING);
     };
 
     const togglePlay = () => {
-        if (player) {
-            if (isPlaying) {
-                player.pauseVideo();
-            } else {
-                player.playVideo();
-            }
-            setIsPlaying(!isPlaying);
-        }
+        if (!player) return;
+        isPlaying ? player.pauseVideo() : player.playVideo();
+        setIsPlaying(!isPlaying);
     };
 
     /*
@@ -120,10 +108,8 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     }, [videoUrl]);
 
     useEffect(() => {
-        if (isPlayingAll && !isPlaying) {
-            togglePlay(true);
-        } else if (!isPlayingAll && isPlaying) {
-            togglePlay(false);
+        if (isPlayingAll !== isPlaying) {
+            togglePlay();
         }
     }, [isPlayingAll]);
 
