@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
 import './YouTubePlayer.css';
 
-const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
+const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll, setIsPlayingAll }) => {
 
     /*
     < --------------- States and References --------------- >
@@ -10,6 +10,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
 
     const [videoLink, setVideoLink] = useState('');
     const [player, setPlayer] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const playerRef = useRef(null);
     const playerContainerRef = useRef(null);
@@ -35,6 +36,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
     const handleCloseClick = () => {
         setVideoLink('');
         onVideoUrlChange('');
+        setIsPlaying(false);
         closePlayer();
     };
 
@@ -52,22 +54,41 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
     };
 
     const loadPlayer = (videoId) => {
-        setPlayer(new window.YT.Player(playerRef.current, {
-            height: '240',
-            width: '426',
-            videoId,
-            events: { onReady: onPlayerReady },
-        }));
-    };
-
-    const onPlayerReady = (event) => {
-        event.target.playVideo();
+        setPlayer(
+            new window.YT.Player(playerRef.current, {
+                height: '240',
+                width: '426',
+                videoId,
+                events: {
+                    onStateChange: onPlayerStateChange,
+                },
+            })
+        );
     };
 
     const closePlayer = () => {
         if (player) {
             player.destroy();
             setPlayer(null);
+        }
+    };
+
+    const onPlayerStateChange = (event) => {
+        if (event.data === window.YT.PlayerState.PLAYING) {
+            setIsPlaying(true);
+        } else {
+            setIsPlaying(false);
+        }
+    };
+
+    const togglePlay = () => {
+        if (player) {
+            if (isPlaying) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+            setIsPlaying(!isPlaying);
         }
     };
 
@@ -82,6 +103,14 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
             loadPlayer(videoId);
         }
     }, [videoUrl]);
+
+    useEffect(() => {
+        if (isPlayingAll && !isPlaying) {
+            togglePlay(true);
+        } else if (!isPlayingAll && isPlaying) {
+            togglePlay(false);
+        }
+    }, [isPlayingAll]);
 
     /*
     < --------------- JSX Structure --------------- >

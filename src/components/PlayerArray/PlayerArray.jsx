@@ -9,6 +9,7 @@ const PlayerArray = ({ videoUrl }) => {
     */
 
     const [videoUrls, setVideoUrls] = useState(['', '']);
+    const [isPlayingAll, setIsPlayingAll] = useState(false);
 
     /*
     < --------------- Functions --------------- >
@@ -32,6 +33,10 @@ const PlayerArray = ({ videoUrl }) => {
             updatedUrls[index] = url;
             return updatedUrls;
         });
+    };
+
+    const togglePlayAll = () => {
+        setIsPlayingAll((prevIsPlayingAll) => !prevIsPlayingAll);
     };
 
     /*
@@ -62,6 +67,8 @@ const PlayerArray = ({ videoUrl }) => {
                             videoUrl={url}
                             onVideoUrlChange={(url) => handleVideoUrlChange(index, url)}
                             onClose={() => handleRemovePlayerAtIndex(index)}
+                            isPlayingAll={isPlayingAll}
+                            setIsPlayingAll={setIsPlayingAll}
                         />
                     </div>
                 ))}
@@ -71,6 +78,9 @@ const PlayerArray = ({ videoUrl }) => {
                     Add YouTube Player
                 </button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
+                <button onClick={togglePlayAll}>
+                    {isPlayingAll ? 'Pause All' : 'Play All'}
+                </button>
             </div>
         </div>
     );
