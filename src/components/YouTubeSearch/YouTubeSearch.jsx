@@ -66,7 +66,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     const handleMaxResultsChange = (e) => {
         const input = e.target.value;
         if (input === '' || (parseInt(input) >= 1 && parseInt(input) <= 10)) {
-            setMaxResults(input);
+            setMaxResults(input === '' ? 5 : input);
         }
     };
 
