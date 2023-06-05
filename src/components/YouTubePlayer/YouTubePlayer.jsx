@@ -77,8 +77,12 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
                 <button onClick={handleEnterClick} className="youtube-player-button">
                     View
                 </button>
-                <button onClick={isVideoVisible ? handleCloseClick : handleRemovePlayer} className="youtube-player-button" id="button-close">
-                    Close
+                <button
+                    onClick={isVideoVisible ? handleCloseClick : handleRemovePlayer}
+                    className="youtube-player-button"
+                    id="button-close"
+                >
+                    {isVideoVisible ? "Clear" : "Close"}
                 </button>
             </div>
             {embedUrl && (
