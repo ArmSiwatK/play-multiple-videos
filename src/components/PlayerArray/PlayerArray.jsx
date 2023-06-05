@@ -5,28 +5,24 @@ import './PlayerArray.css';
 const PlayerArray = ({ videoUrl }) => {
 
     /*
-    < --------------- States --------------- >
+    < --------------- State --------------- >
     */
 
-    const [players, setPlayers] = useState(['youtube', 'youtube']);
-    const [videoUrls, setVideoUrls] = useState(['', '']);
+    const [videoUrls, setVideoUrls] = useState(['']);
 
     /*
     < --------------- Functions --------------- >
     */
 
     const handleAddPlayer = () => {
-        setPlayers((prevPlayers) => [...prevPlayers, 'youtube']);
         setVideoUrls((prevUrls) => [...prevUrls, '']);
     };
 
     const handleRemovePlayerAtIndex = (index) => {
-        setPlayers((prevPlayers) => prevPlayers.filter((_, i) => i !== index));
         setVideoUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
     };
 
     const handleRemoveAllPlayers = () => {
-        setPlayers([]);
         setVideoUrls([]);
     };
 
@@ -60,10 +56,10 @@ const PlayerArray = ({ videoUrl }) => {
     return (
         <div className="player-array-container">
             <div className="player-array-players">
-                {players.map((_, index) => (
+                {videoUrls.map((url, index) => (
                     <div key={`player-${index + 1}`} className="player-array-player">
                         <YouTubePlayer
-                            videoUrl={videoUrls[index]}
+                            videoUrl={url}
                             onVideoUrlChange={(url) => handleVideoUrlChange(index, url)}
                             onClose={() => handleRemovePlayerAtIndex(index)}
                         />
@@ -71,7 +67,9 @@ const PlayerArray = ({ videoUrl }) => {
                 ))}
             </div>
             <div className="player-array-buttons">
-                <button id="player-add-button" onClick={handleAddPlayer}>Add YouTube Player</button>
+                <button id="player-add-button" onClick={handleAddPlayer}>
+                    Add YouTube Player
+                </button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
             </div>
         </div>
