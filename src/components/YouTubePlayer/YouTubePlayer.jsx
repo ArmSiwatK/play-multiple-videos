@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
 import './YouTubePlayer.css';
 
-const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll, setIsPlayingAll }) => {
+const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) => {
 
     /*
     < --------------- States and References --------------- >

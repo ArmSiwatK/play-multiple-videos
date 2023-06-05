@@ -68,7 +68,6 @@ const PlayerArray = ({ videoUrl }) => {
                             onVideoUrlChange={(url) => handleVideoUrlChange(index, url)}
                             onClose={() => handleRemovePlayerAtIndex(index)}
                             isPlayingAll={isPlayingAll}
-                            setIsPlayingAll={setIsPlayingAll}
                         />
                     </div>
                 ))}
@@ -77,10 +76,10 @@ const PlayerArray = ({ videoUrl }) => {
                 <button id="player-add-button" onClick={handleAddPlayer}>
                     Add YouTube Player
                 </button>
-                <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
                 <button onClick={togglePlayAll}>
                     {isPlayingAll ? 'Pause All' : 'Play All'}
                 </button>
+                <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
             </div>
         </div>
     );
