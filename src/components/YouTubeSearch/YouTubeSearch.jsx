@@ -65,7 +65,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const handleMaxResultsChange = (e) => {
         const input = e.target.value;
-        if (input === '' || (parseInt(input) >= 1 && parseInt(input) <= 20)) {
+        if (input === '' || (parseInt(input) >= 1 && parseInt(input) <= 10)) {
             setMaxResults(input);
         }
     };
@@ -110,8 +110,10 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                     type="number"
                     value={maxResults}
                     onChange={handleMaxResultsChange}
-                    placeholder="Max Results"
+                    placeholder="Results (1–10)"
                     className="results-number-input"
+                    min="1"
+                    max="10"
                 />
             </div>
 
