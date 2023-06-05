@@ -97,6 +97,21 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     */
 
     useEffect(() => {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        window.onYouTubeIframeAPIReady = () => {
+            if (videoUrl && isValidUrl(videoUrl)) {
+                const videoId = extractVideoId(videoUrl);
+                setVideoLink(videoUrl || '');
+                loadPlayer(videoId);
+            }
+        };
+    }, []);
+
+    useEffect(() => {
         if (videoUrl && isValidUrl(videoUrl)) {
             const videoId = extractVideoId(videoUrl);
             setVideoLink(videoUrl || '');
