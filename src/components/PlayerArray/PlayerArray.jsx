@@ -8,7 +8,7 @@ const PlayerArray = ({ videoUrl }) => {
     < --------------- State --------------- >
     */
 
-    const [videoUrls, setVideoUrls] = useState(['']);
+    const [videoUrls, setVideoUrls] = useState(['', '']);
 
     /*
     < --------------- Functions --------------- >

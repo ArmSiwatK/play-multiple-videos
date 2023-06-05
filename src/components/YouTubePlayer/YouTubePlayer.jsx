@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
 import './YouTubePlayer.css';
 
 const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
 
     /*
-    < --------------- States --------------- >
+    < --------------- States and References --------------- >
     */
 
     const [videoLink, setVideoLink] = useState('');
-    const [embedUrl, setEmbedUrl] = useState('');
-    const [isVideoVisible, setIsVideoVisible] = useState(false);
+    const [player, setPlayer] = useState(null);
+
+    const playerRef = useRef(null);
+    const playerContainerRef = useRef(null);
 
     /*
     < --------------- Functions --------------- >
@@ -26,23 +28,47 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
         }
 
         const videoId = extractVideoId(videoLink);
-        const newEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
-
-        setEmbedUrl(newEmbedUrl);
-        setIsVideoVisible(true);
         onVideoUrlChange(videoLink);
+        loadPlayer(videoId);
     };
 
     const handleCloseClick = () => {
         setVideoLink('');
-        setEmbedUrl('');
-        setIsVideoVisible(false);
         onVideoUrlChange('');
+        closePlayer();
     };
 
     const handleRemovePlayer = () => {
         handleCloseClick();
         onClose();
+    };
+
+    const handleButtonClick = () => {
+        if (player) {
+            handleCloseClick();
+        } else {
+            handleRemovePlayer();
+        }
+    };
+
+    const loadPlayer = (videoId) => {
+        setPlayer(new window.YT.Player(playerRef.current, {
+            height: '240',
+            width: '426',
+            videoId,
+            events: { onReady: onPlayerReady },
+        }));
+    };
+
+    const onPlayerReady = (event) => {
+        event.target.playVideo();
+    };
+
+    const closePlayer = () => {
+        if (player) {
+            player.destroy();
+            setPlayer(null);
+        }
     };
 
     /*
@@ -52,11 +78,8 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
     useEffect(() => {
         if (videoUrl && isValidUrl(videoUrl)) {
             const videoId = extractVideoId(videoUrl);
-            const newEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
-
-            setEmbedUrl(newEmbedUrl);
-            setIsVideoVisible(true);
             setVideoLink(videoUrl || '');
+            loadPlayer(videoId);
         }
     }, [videoUrl]);
 
@@ -77,25 +100,13 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose }) => {
                 <button onClick={handleEnterClick} className="youtube-player-button">
                     View
                 </button>
-                <button
-                    onClick={isVideoVisible ? handleCloseClick : handleRemovePlayer}
-                    className="youtube-player-button"
-                    id="button-close"
-                >
-                    {isVideoVisible ? "Clear" : "Close"}
+                <button onClick={handleButtonClick} className="youtube-player-button" id="button-close">
+                    {player ? 'Clear' : 'Close'}
                 </button>
             </div>
-            {embedUrl && (
-                <div className="youtube-player-video-wrapper">
-                    <iframe
-                        id="videoPlayer"
-                        src={embedUrl}
-                        allowFullScreen
-                        title="YouTube Video Player"
-                        className="youtube-player-video"
-                    ></iframe>
-                </div>
-            )}
+            <div className={`youtube-player-video-wrapper${!player ? ' hidden' : ''}`} ref={playerContainerRef}>
+                <div id="player" ref={playerRef}></div>
+            </div>
         </div>
     );
 };
