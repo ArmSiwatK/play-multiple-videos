@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import he from 'he';
 import './YouTubeSearch.css';
 
 const YouTubeSearch = ({ onVideoUrlCopy }) => {
@@ -31,7 +32,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
             setSearchResults([]);
             setShowResults(false);
-            
+
             setIsLoading(true);
 
             setPreviousSearchTerm(searchTerm);
@@ -83,7 +84,10 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
         setPreviousMaxResults('');
     };
 
-    const truncateTitle = (title) => (title.length <= maxTitleLength ? title : `${title.substring(0, maxTitleLength)}...`);
+    const truncateTitle = (title) => {
+        const truncatedTitle = title.length <= maxTitleLength ? title : `${title.substring(0, maxTitleLength)}...`;
+        return he.decode(truncatedTitle);
+    };
 
     /*
     < --------------- JSX Structure --------------- >
