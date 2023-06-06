@@ -12,7 +12,7 @@
   height: 60px;
   font-size: 18px;
   text-align: center;
-  background-color: #dc3545;
+  background-image: linear-gradient(to right, #dc3545, #333333);
   color: white;
   border: none;
   border-radius: 8px;
@@ -20,10 +20,10 @@
   text-decoration: none;
   line-height: 60px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .youtube-button:hover {
-  background-color: #c82333;
+  transform: scale(1.1);
   color: white;
 }
