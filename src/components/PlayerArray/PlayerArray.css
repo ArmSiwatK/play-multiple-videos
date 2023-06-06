@@ -14,6 +14,15 @@
     background-color: #c82333;
 }
 
+#player-play-pause {
+    background-image: linear-gradient(to right, #dc3545, #333333);
+    transition: transform 0.3s ease;
+}
+
+#player-play-pause:hover {
+    transform: scale(1.1);
+}
+
 .player-array-buttons button {
     margin-right: 10px;
     background-color: #333333;

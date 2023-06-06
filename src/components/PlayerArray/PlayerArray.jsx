@@ -76,7 +76,7 @@ const PlayerArray = ({ videoUrl }) => {
                 <button id="player-add-button" onClick={handleAddPlayer}>
                     Add YouTube Player
                 </button>
-                <button onClick={togglePlayAll}>
+                <button id="player-play-pause" onClick={togglePlayAll}>
                     {isPlayingAll ? 'Pause All' : 'Play All'}
                 </button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
