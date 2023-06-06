@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Background from './components/Background/Background';
 import YouTubeSearch from './components/YouTubeSearch/YouTubeSearch';
 import PlayerArray from './components/PlayerArray/PlayerArray';
-import Instruction from './components/Instruction/Instruction';
+import Instructions from './components/Instructions/Instructions';
 import './App.css';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Background />
       <YouTubeSearch onVideoUrlCopy={handleVideoUrlCopy} />
       <PlayerArray videoUrl={videoUrl} />
-      <Instruction />
+      <Instructions />
       <a
         href="https://www.youtube.com"
         className="youtube-button"

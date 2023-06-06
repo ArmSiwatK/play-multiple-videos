@@ -1,5 +1,5 @@
 import React from 'react';
-import './Instruction.css';
+import './Instructions.css';
 
 const Instruction = () => {
     return (
@@ -10,7 +10,7 @@ const Instruction = () => {
                 <li>The YouTube player accepts any YouTube link that contains a video ID.</li>
                 <li>Add or remove players using the control buttons.</li>
                 <li>Searching the first time around will always be slow. Patience.</li>
-                <li>If searching really doesn't work, it most likely means my YouTube Data API has reached its daily limit. Go to YouTube yourself for the time being and try again tomorrow.</li>
+                <li>If you don't see a loading icon when you search, it most likely means my YouTube Data API has reached its daily limit. Go to YouTube yourself for the time being and try again tomorrow.</li>
                 <li>Here, a button for your convenience.</li>
             </ul>
         </div>
