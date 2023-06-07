@@ -27,6 +27,8 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
         if (!videoLink || !isValidUrl(videoLink)) return;
         const videoId = extractVideoId(videoLink);
         onVideoUrlChange(videoLink);
+        setVideoUrl(videoLink);
+        setVideoLink('');
         loadPlayer(videoId);
     };
 
