@@ -23,6 +23,10 @@
     transform: scale(1.1);
 }
 
+#player-play-pause:active {
+    transform: scale(0.95);
+}
+
 .player-array-buttons button {
     margin-right: 10px;
     background-color: #333333;
@@ -30,16 +34,15 @@
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .player-array-buttons button:hover {
     background-color: #555555;
 }
 
-.player-array-buttons button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.4);
+.player-array-buttons button:active {
+    transform: scale(0.95);
 }
 
 .player-array-players {

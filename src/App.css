@@ -27,3 +27,7 @@
   transform: scale(1.1);
   color: white;
 }
+
+.youtube-button:active {
+  transform: scale(0.95);
+}
