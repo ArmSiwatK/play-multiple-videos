@@ -15,6 +15,9 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     const [showResults, setShowResults] = useState(true);
     const [maxResults, setMaxResults] = useState();
 
+    const [copyMode, setCopyMode] = useState(false);
+    const [buttonActive, setButtonActive] = useState(false);
+
     const [previousSearchTerm, setPreviousSearchTerm] = useState('');
     const [previousMaxResults, setPreviousMaxResults] = useState('');
 
@@ -73,7 +76,15 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const handleCardClick = async (videoId) => {
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-        onVideoUrlCopy(videoUrl);
+        if (copyMode) {
+            try {
+                await navigator.clipboard.writeText(videoUrl);
+            } catch (error) {
+                console.error('Failed to copy the URL to clipboard:', error);
+            }
+        } else {
+            onVideoUrlCopy(videoUrl);
+        }
     };
 
     const handleClearResults = () => {
@@ -87,6 +98,11 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     const truncateTitle = (title) => {
         const truncatedTitle = title.length <= maxTitleLength ? title : `${title.substring(0, maxTitleLength)}...`;
         return he.decode(truncatedTitle);
+    };
+
+    const toggleCopyMode = () => {
+        setCopyMode((prevState) => !prevState);
+        setButtonActive((prevState) => !prevState);
     };
 
     /*
@@ -106,6 +122,12 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                 />
                 <button onClick={handleSearch} className="button-search">
                     Search
+                </button>
+                <button
+                    onClick={toggleCopyMode}
+                    className={`button-copy ${buttonActive ? 'active' : ''}`}
+                >
+                    Copy
                 </button>
                 <button onClick={handleClearResults} className="button-clear">
                     Clear

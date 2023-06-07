@@ -30,24 +30,24 @@
 }
 
 .button-search,
-.button-clear {
+.button-clear,
+.button-copy {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    color: #fff;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button-search {
     margin-right: 10px;
     background-color: #dc3545;
-    color: #fff;
 }
 
 .button-clear {
     background-color: #333333;
-    color: #fff;
 }
 
 .button-search:hover {
@@ -59,8 +59,23 @@
 }
 
 .button-search:active,
-.button-clear:active {
+.button-clear:active,
+.button-copy:active {
     transform: scale(0.95);
+}
+
+.button-copy {
+    margin-right: 10px;
+    background-image: linear-gradient(to right, #dc3545, #333333);
+    transition: transform 0.3s ease;
+}
+
+.button-copy:hover {
+    transform: scale(1.1);
+}
+
+.button-copy.active {
+    box-shadow: 0 0 10px #dc3545;
 }
 
 
