@@ -56,7 +56,8 @@ const PlayerArray = ({ videoUrl }) => {
 
     useEffect(() => {
         const handleKeyPress = (event) => {
-            if (event.code === 'Space') {
+            const isInputElement = event.target.tagName.toLowerCase() === 'input';
+            if (event.code === 'Space' && !isInputElement) {
                 event.preventDefault();
                 togglePlayAll();
             }
