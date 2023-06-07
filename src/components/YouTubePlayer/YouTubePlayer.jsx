@@ -75,7 +75,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     };
 
     const togglePlay = () => {
-        if (!player) return;
+        if (!player || !player.pauseVideo || !player.playVideo) return;
         isPlaying ? player.pauseVideo() : player.playVideo();
         setIsPlaying(!isPlaying);
     };
