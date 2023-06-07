@@ -40,7 +40,7 @@ const PlayerArray = ({ videoUrl }) => {
     };
 
     /*
-    < --------------- useEffect Hook --------------- >
+    < --------------- useEffect Hooks --------------- >
     */
 
     useEffect(() => {
@@ -53,6 +53,21 @@ const PlayerArray = ({ videoUrl }) => {
             });
         }
     }, [videoUrl]);
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.code === 'Space') {
+                event.preventDefault();
+                togglePlayAll();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
 
     /*
     < --------------- JSX Structure --------------- >
