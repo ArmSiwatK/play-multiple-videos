@@ -1,58 +1,56 @@
 .player-array-container {
-    margin: 20px;
+  margin: 20px;
 }
-
-.player-array-buttons {
-    margin-bottom: 10px;
+.player-array-container .player-array-buttons {
+  margin-bottom: 10px;
 }
-
-#player-add-button {
-    background-color: #dc3545;
+.player-array-container .player-array-buttons button {
+  margin-right: 10px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-#player-add-button:hover {
-    background-color: #c82333;
+.player-array-container .player-array-buttons button:hover {
+  background-color: #555555;
 }
-
-#player-play-pause {
-    background-image: linear-gradient(to right, #dc3545, #333333);
-    transition: transform 0.3s ease;
+.player-array-container .player-array-buttons button:active {
+  transform: scale(0.95);
 }
-
-#player-play-pause:hover {
-    transform: scale(1.1);
+.player-array-container .player-array-buttons .player-array-add-button {
+  background-color: #dc3545;
 }
-
-#player-play-pause:active {
-    transform: scale(0.95);
+.player-array-container .player-array-buttons .player-array-add-button:hover {
+  background-color: #c82333;
 }
-
-.player-array-buttons button {
-    margin-right: 10px;
-    background-color: #333333;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.player-array-container .player-array-buttons .player-array-play-pause {
+  background-image: linear-gradient(to right, #dc3545, #333333);
+  transition: transform 0.3s ease;
 }
-
-.player-array-buttons button:hover {
-    background-color: #555555;
+.player-array-container .player-array-buttons .player-array-play-pause:hover {
+  transform: scale(1.1);
 }
-
-.player-array-buttons button:active {
-    transform: scale(0.95);
+.player-array-container .player-array-buttons .player-array-play-pause:active {
+  transform: scale(0.95);
 }
-
-.player-array-players {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.player-array-container .player-array-buttons .player-array-remove-button {
+  background-color: #333333;
 }
-
-.player-array-player {
-    margin: 10px;
-    display: flex;
-    align-items: center;
+.player-array-container .player-array-buttons .player-array-remove-button:hover {
+  background-color: #555555;
+}
+.player-array-container .player-array-buttons .player-array-remove-button:active {
+  transform: scale(0.95);
+}
+.player-array-container .player-array-players {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.player-array-container .player-array-players .player-array-player {
+  margin: 10px;
+  display: flex;
+  align-items: center;
 }
