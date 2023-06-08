@@ -10,23 +10,25 @@
     margin-bottom: 20px;
 }
 
-.search-query-input {
-    width: 300px;
+.search-query-input,
+.results-number-input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.search-query-input {
+    width: 300px;
     margin-right: 10px;
 }
 
 .results-number-input {
-    margin-left: 10px;
-    padding: 5px;
     width: 140px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     text-align: center;
     font-size: 18px;
+    margin-left: 10px;
+    padding: 5px;
 }
 
 .button-search,
@@ -76,78 +78,4 @@
 
 .button-copy.active {
     box-shadow: 0 0 10px #dc3545;
-}
-
-
-
-
-
-
-.search-loading-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}
-
-.search-spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-top-color: #333;
-    border-radius: 50%;
-    animation: spin 1s infinite linear;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-
-
-
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.card {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.card:active {
-    transform: scale(0.95);
-}
-
-.card img {
-    width: 120px;
-    height: 90px;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-.card h3 {
-    font-size: 18px;
-    margin: 0;
 }
