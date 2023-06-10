@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import he from 'he';
-import './styles/YouTubeSearch.css';
-import './styles/SearchResults.css';
+import './YouTubeSearch.css';
+import './SearchResults.css';
 
 const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
