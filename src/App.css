@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 #root {
   margin: 0 auto;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .youtube-button {
@@ -21,10 +22,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
+
 .youtube-button:hover {
   transform: scale(1.1);
   color: white;
 }
+
 .youtube-button:active {
   transform: scale(0.95);
 }
