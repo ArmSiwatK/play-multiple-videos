@@ -1,58 +1,66 @@
-.youtube-player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5% auto;
+.youtube-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5% auto;
 }
+
 .youtube-player-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
 }
+
 .youtube-player-input {
-  flex: 1;
-  padding: 10px;
-  margin-right: 10px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .youtube-player-button {
-  margin: auto 10px;
-  padding: 10px 20px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: auto 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.youtube-player-button-clear {
-  margin-left: 10px;
-  background-color: #333333;
+
+#button-close {
+    margin-right: 0;
+    margin-left: 10px;
+    background-color: #333333;
 }
-.youtube-player-button-clear:hover {
-  background-color: #555555;
+
+.youtube-player-button:hover {
+    background-color: #c82333;
 }
-.youtube-player-button:first-of-type {
-  background-color: #dc3545;
-}
-.youtube-player-button:first-of-type:hover {
-  background-color: #c82333;
-}
+
 .youtube-player-button:active {
-  transform: scale(0.95);
+    transform: scale(0.95);
 }
+
+#button-close:hover {
+    background-color: #555555;
+}
+
 .youtube-player-video-wrapper {
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
 }
-.youtube-player-video-wrapper-hidden {
-  display: none;
+
+.youtube-player-video-wrapper.hidden {
+    display: none;
 }

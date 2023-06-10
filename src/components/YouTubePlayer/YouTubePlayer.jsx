@@ -120,7 +120,7 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
     */
 
     return (
-        <div className="youtube-player">
+        <div className="youtube-player-container">
             <div className="youtube-player-row">
                 <input
                     type="text"
@@ -132,11 +132,11 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
                 <button onClick={handleEnterClick} className="youtube-player-button">
                     View
                 </button>
-                <button onClick={handleButtonClick} className="youtube-player-button youtube-player-button-clear">
+                <button onClick={handleButtonClick} className="youtube-player-button" id="button-close">
                     {player ? 'Clear' : 'Close'}
                 </button>
             </div>
-            <div className={`youtube-player-video-wrapper${!player ? ' youtube-player-video-wrapper-hidden' : ''}`} ref={playerContainerRef}>
+            <div className={`youtube-player-video-wrapper${!player ? ' hidden' : ''}`} ref={playerContainerRef}>
                 <div id="player" ref={playerRef}></div>
             </div>
         </div>
