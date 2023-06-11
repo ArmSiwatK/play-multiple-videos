@@ -126,7 +126,8 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                 </button>
                 <button
                     onClick={toggleCopyMode}
-                    className={`button-copy ${buttonActive ? 'active' : ''}`}
+                    className={`gradient-button ${buttonActive ? 'active' : ''}`}
+                    id={`copy-button`}
                 >
                     Copy
                 </button>

@@ -3,7 +3,7 @@ import Background from './components/Background/Background';
 import YouTubeSearch from './components/YouTubeSearch/YouTubeSearch';
 import PlayerArray from './components/PlayerArray/PlayerArray';
 import Instructions from './components/Instructions/Instructions';
-import './App.css';
+import './styles/App.css';
 
 function App() {
   const [videoUrl, setVideoUrl] = useState('');
@@ -20,7 +20,8 @@ function App() {
       <Instructions />
       <a
         href="https://www.youtube.com"
-        className="youtube-button"
+        className="gradient-button"
+        id="youtube-link-button"
         target="_blank"
         rel="noopener noreferrer"
       >

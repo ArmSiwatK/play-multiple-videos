@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.gradient-button {
+  background-image: linear-gradient(to right, #dc3545, #333333);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.gradient-button:hover {
+  transform: scale(1.1);
+}
+
+.gradient-button:active {
+  transform: scale(0.95);
+}
+
+.gradient-button.active {
+  box-shadow: 0 0 10px #dc3545;
+}
+
+#youtube-link-button {
+  display: block;
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  border-radius: 8px;
+  margin: 0 auto 40px;
+  line-height: 60px;
+}
