@@ -92,7 +92,7 @@ const PlayerArray = ({ videoUrl }) => {
                 <button id="player-add-button" onClick={handleAddPlayer}>
                     Add YouTube Player
                 </button>
-                <button id="player-play-pause" onClick={togglePlayAll}>
+                <button className="gradient-button" id="play-pause-button" onClick={togglePlayAll}>
                     {isPlayingAll ? 'Pause All' : 'Play All'}
                 </button>
                 <button onClick={handleRemoveAllPlayers}>Remove All Players</button>
