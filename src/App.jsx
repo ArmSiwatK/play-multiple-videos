@@ -18,15 +18,9 @@ function App() {
       <YouTubeSearch onVideoUrlCopy={handleVideoUrlCopy} />
       <PlayerArray videoUrl={videoUrl} />
       <Instructions />
-      <button
-        href="https://www.youtube.com"
-        className="gradient-button"
-        id="youtube-link-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Go to YouTube
-      </button>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+        <button class="gradient-button" id="youtube-link-button">Go to YouTube</button>
+      </a>
     </>
   );
 }
