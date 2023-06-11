@@ -37,7 +37,7 @@ button:active {
 
 .gradient-button {
   background-image: linear-gradient(to right, #dc3545, #333333);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: white;
   text-align: center;
   text-decoration: none;
