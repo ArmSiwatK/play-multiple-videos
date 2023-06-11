@@ -121,17 +121,16 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                     placeholder="Enter search term"
                     className="search-query-input"
                 />
-                <button onClick={handleSearch} className="button-search">
+                <button onClick={handleSearch} className="red-button">
                     Search
                 </button>
                 <button
                     onClick={toggleCopyMode}
                     className={`gradient-button ${buttonActive ? 'active' : ''}`}
-                    id="copy-button"
                 >
                     Copy
                 </button>
-                <button onClick={handleClearResults} className="button-clear">
+                <button onClick={handleClearResults} className="black-button">
                     Clear
                 </button>
                 <input

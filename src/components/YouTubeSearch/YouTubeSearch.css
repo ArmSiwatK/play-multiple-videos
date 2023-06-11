@@ -30,19 +30,3 @@
     font-size: 16px;
     padding: 5px;
 }
-
-.button-search {
-    background-color: #dc3545;
-}
-
-.button-clear {
-    background-color: #333333;
-}
-
-.button-search:hover {
-    background-color: #c82333;
-}
-
-.button-clear:hover {
-    background-color: #555555;
-}

@@ -23,37 +23,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.youtube-player-button {
-    margin: auto 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #dc3545;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-#button-close {
-    margin-right: 0;
-    margin-left: 10px;
-    background-color: #333333;
-}
-
-.youtube-player-button:hover {
-    background-color: #c82333;
-}
-
-.youtube-player-button:active {
-    transform: scale(0.95);
-}
-
-#button-close:hover {
-    background-color: #555555;
-}
-
 .youtube-player-video-wrapper {
     width: 100%;
     height: 0;

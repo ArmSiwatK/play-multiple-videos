@@ -129,10 +129,10 @@ const YouTubePlayer = ({ videoUrl, onVideoUrlChange, onClose, isPlayingAll }) =>
                     placeholder="Enter YouTube link"
                     className="youtube-player-input"
                 />
-                <button onClick={handleEnterClick} className="youtube-player-button">
+                <button onClick={handleEnterClick} className="red-button">
                     View
                 </button>
-                <button onClick={handleButtonClick} className="youtube-player-button" id="button-close">
+                <button onClick={handleButtonClick} className="black-button" id="button-close">
                     {player ? 'Clear' : 'Close'}
                 </button>
             </div>

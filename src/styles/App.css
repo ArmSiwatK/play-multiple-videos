@@ -19,8 +19,20 @@ button {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.button:active {
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
   transform: scale(0.95);
+}
+
+.red-button {
+  background-color: #dc3545;
+}
+
+.red-button:hover {
+  background-color: #c82333;
 }
 
 .gradient-button {
@@ -32,16 +44,16 @@ button {
   transition: transform 0.3s ease;
 }
 
-.gradient-button:hover {
-  transform: scale(1.1);
-}
-
-.gradient-button:active {
-  transform: scale(0.95);
-}
-
 .gradient-button.active {
   box-shadow: 0 0 10px #dc3545;
+}
+
+.black-button {
+  background-color: #333333;
+}
+
+.black-button:hover {
+  background-color: #555555;
 }
 
 #youtube-link-button {
@@ -51,5 +63,4 @@ button {
   font-size: 18px;
   border-radius: 8px;
   margin: 0 auto 40px;
-  line-height: 60px;
 }

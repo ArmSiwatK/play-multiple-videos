@@ -6,22 +6,6 @@
     margin-bottom: 10px;
 }
 
-#player-add-button {
-    background-color: #dc3545;
-}
-
-#player-add-button:hover {
-    background-color: #c82333;
-}
-
-.player-array-buttons button:hover {
-    background-color: #555555;
-}
-
-.player-array-buttons button:active {
-    transform: scale(0.95);
-}
-
 .player-array-players {
     display: flex;
     flex-wrap: wrap;
