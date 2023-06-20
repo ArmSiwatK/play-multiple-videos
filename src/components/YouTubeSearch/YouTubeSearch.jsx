@@ -14,7 +14,9 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [showResults, setShowResults] = useState(true);
+
     const [maxResults, setMaxResults] = useState();
+    const [maxResultsInput, setMaxResultsInput] = useState('');
 
     const [copyMode, setCopyMode] = useState(false);
     const [buttonActive, setButtonActive] = useState(false);
@@ -70,9 +72,8 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const handleMaxResultsChange = (e) => {
         const input = e.target.value;
-        if (input === '' || (parseInt(input) >= 1 && parseInt(input) <= 10)) {
-            setMaxResults(input === '' ? 5 : input);
-        }
+        setMaxResultsInput(input);
+        setMaxResults(input === '' ? 5 : Math.min(parseInt(input), 10));
     };
 
     const handleCardClick = async (videoId) => {
@@ -135,7 +136,7 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                 </button>
                 <input
                     type="number"
-                    value={maxResults}
+                    value={maxResultsInput}
                     onChange={handleMaxResultsChange}
                     placeholder="Results (1–10)"
                     className="results-number-input"
