@@ -21,7 +21,7 @@
 
 .search-query-input {
     width: 300px;
-    margin-right: 10px;
+    margin: 0 5px;
 }
 
 .results-number-input {
@@ -29,4 +29,5 @@
     text-align: center;
     font-size: 16px;
     padding: 5px;
+    margin: 0 5px;
 }

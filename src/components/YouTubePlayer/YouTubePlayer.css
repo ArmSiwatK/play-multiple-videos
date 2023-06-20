@@ -15,7 +15,7 @@
 .youtube-player-input {
     flex: 1;
     padding: 10px;
-    margin-right: 10px;
+    margin: 0 5px;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
