@@ -24,8 +24,6 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     const [previousSearchTerm, setPreviousSearchTerm] = useState('');
     const [previousMaxResults, setPreviousMaxResults] = useState('');
 
-    const [preloading, setPreloading] = useState(true);
-
     const maxTitleLength = 60;
 
     /*
@@ -114,24 +112,17 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     */
 
     useEffect(() => {
-        const preloadSearch = async () => {
+        const keepAliveInterval = setInterval(async () => {
             try {
-                setIsLoading(true);
-
-                await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ searchTerm: '', maxResults: 0 }),
-                });
+                await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/keep-alive`);
             } catch (error) {
-                console.error('An error occurred:', error);
-            } finally {
-                setIsLoading(false);
-                setPreloading(false);
+                console.error('An error occurred during keep-alive:', error);
             }
-        };
+        }, 300000);
 
-        preloadSearch();
+        return () => {
+            clearInterval(keepAliveInterval);
+        };
     }, []);
 
     /*
@@ -177,8 +168,6 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                     <div className="search-spinner"></div>
                 </div>
             )}
-
-            {preloading && <div>Connecting to YouTube Data API</div>}
 
             {showResults && (
                 <ul>
