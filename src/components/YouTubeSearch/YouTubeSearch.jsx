@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import he from 'he';
 import './YouTubeSearch.css';
 import './SearchResults.css';
@@ -23,6 +23,8 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const [previousSearchTerm, setPreviousSearchTerm] = useState('');
     const [previousMaxResults, setPreviousMaxResults] = useState('');
+
+    const [preloading, setPreloading] = useState(true);
 
     const maxTitleLength = 60;
 
@@ -108,6 +110,31 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
     };
 
     /*
+    < --------------- useEffect Hook --------------- >
+    */
+
+    useEffect(() => {
+        const preloadSearch = async () => {
+            try {
+                setIsLoading(true);
+
+                await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ searchTerm: '', maxResults: 0 }),
+                });
+            } catch (error) {
+                console.error('An error occurred:', error);
+            } finally {
+                setIsLoading(false);
+                setPreloading(false);
+            }
+        };
+
+        preloadSearch();
+    }, []);
+
+    /*
     < --------------- JSX Structure --------------- >
     */
 
@@ -150,6 +177,8 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
                     <div className="search-spinner"></div>
                 </div>
             )}
+
+            {preloading && <div>Connecting to YouTube Data API</div>}
 
             {showResults && (
                 <ul>
