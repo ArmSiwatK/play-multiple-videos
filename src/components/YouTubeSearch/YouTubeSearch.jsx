@@ -72,8 +72,15 @@ const YouTubeSearch = ({ onVideoUrlCopy }) => {
 
     const handleMaxResultsChange = (e) => {
         const input = e.target.value;
-        setMaxResultsInput(input);
-        setMaxResults(input === '' ? 5 : Math.min(parseInt(input), 10));
+
+        const isValidNumber = /^[1-9]|10$/.test(input);
+
+        if (isValidNumber) {
+            setMaxResultsInput(input);
+            setMaxResults(parseInt(input));
+        } else {
+            setMaxResultsInput('');
+        }
     };
 
     const handleCardClick = async (videoId) => {
