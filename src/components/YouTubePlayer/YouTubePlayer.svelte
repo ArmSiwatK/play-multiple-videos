@@ -1,6 +1,5 @@
 <script>
   import { extractVideoId, isValidUrl } from './YouTubePlayerUtils';
-  import './YouTubePlayer.css';
 
   let {
     videoUrl = '',
@@ -150,3 +149,80 @@
     <div bind:this={playerElement}></div>
   </div>
 </div>
+
+<style>
+  .youtube-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5% auto;
+  }
+
+  .youtube-player-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .youtube-player-input {
+    flex: 1;
+    width: 100%;
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+  }
+
+  .youtube-player-video-wrapper {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+  }
+
+  .youtube-player-video-wrapper.hidden {
+    display: none;
+  }
+
+  button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  .red-button {
+    background-color: #dc3545;
+  }
+
+  .red-button:hover {
+    background-color: #c82333;
+  }
+
+  .black-button {
+    background-color: #333333;
+  }
+
+  .black-button:hover {
+    background-color: #555555;
+  }
+</style>

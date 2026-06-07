@@ -1,11 +1,8 @@
 <script>
   import YouTubePlayer from '../YouTubePlayer/YouTubePlayer.svelte';
-  import './PlayerArray.css';
 
-  let { videoUrl = '' } = $props();
   let videoUrls = $state(['', '']);
   let isPlayingAll = $state(false);
-  let previousVideoUrl = $state('');
 
   const handleAddPlayer = () => {
     videoUrls = [...videoUrls, ''];
@@ -26,17 +23,6 @@
   const togglePlayAll = () => {
     isPlayingAll = !isPlayingAll;
   };
-
-  $effect(() => {
-    if (!videoUrl || videoUrl === previousVideoUrl) return;
-
-    const emptyIndex = videoUrls.findIndex((url) => url === '');
-    if (emptyIndex !== -1) {
-      videoUrls = videoUrls.map((currentUrl, index) => (index === emptyIndex ? videoUrl : currentUrl));
-    }
-
-    previousVideoUrl = videoUrl;
-  });
 
   $effect(() => {
     const handleKeyPress = (event) => {
@@ -70,9 +56,77 @@
   </div>
   <div class="player-array-buttons">
     <button class="red-button" onclick={handleAddPlayer}>Add YouTube Player</button>
-    <button class="gradient-button" id="play-pause-button" onclick={togglePlayAll}>
+    <button class="gradient-button" onclick={togglePlayAll}>
       {isPlayingAll ? 'Pause All' : 'Play All'}
     </button>
     <button onclick={handleRemoveAllPlayers} class="black-button">Remove All Players</button>
   </div>
 </div>
+
+<style>
+  .player-array-container {
+    margin: 20px;
+  }
+
+  .player-array-buttons {
+    margin-bottom: 10px;
+  }
+
+  .player-array-players {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .player-array-player {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+
+  button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  .red-button {
+    background-color: #dc3545;
+  }
+
+  .red-button:hover {
+    background-color: #c82333;
+  }
+
+  .gradient-button {
+    background-image: linear-gradient(to right, #dc3545, #333333);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .black-button {
+    background-color: #333333;
+  }
+
+  .black-button:hover {
+    background-color: #555555;
+  }
+</style>

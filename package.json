@@ -10,9 +10,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "he": "1.2.0"
-  },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
