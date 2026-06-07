@@ -1,6 +1,6 @@
 # Play Multiple YouTube Videos
 
-A React application that allows users to view YouTube videos, play audio/video files, and take notes. Why would anybody want to play multiple YouTube videos from the convenience of a single page? Well, I don't know about other people, but I occasionally want to include ambient noises and/or other noises for a personalized, immersive listening experience. Manually playing multiple audio/videos at a time is a hassle.
+A Svelte application that allows users to view multiple YouTube videos from the convenience of a single page. Why would anybody want that? Well, I don't know about other people, but I occasionally want to include ambient noises and/or other noises for a personalized, immersive listening experience. Manually playing multiple audio/videos at a time is a hassle.
 
 ## Installation
 
@@ -17,10 +17,10 @@ A React application that allows users to view YouTube videos, play audio/video f
 3. Install dependencies:
 
    ```
-   yarn install
+   pnpm install
    ```
 
 4. Start the development server:
    ```
-   yarn run dev
+   pnpm run dev
    ```
